@@ -9,7 +9,7 @@ const lyTop = {
                     <div class='yui3-u Left logoArea'> \
                         <a class='logo-bd' title='乐优' href='index.html' target='_blank'></a> \
                     </div> \
-                    <div class='yui3-u Center searchArea'> \
+                    <div class='yui3-u Center searchArea' @keyup.enter='search'> \
                         <div class='search'> \
                             <form action='' class='sui-form form-inline'> \
                                 <!--searchAutoComplete--> \
@@ -79,7 +79,7 @@ const lyTop = {
     },
     methods: {
         search() {
-            window.location = 'search.html?key=' + this.key;
+            window.location = '/search.html?key=' + this.key;
         },
         getUrlParam: function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
