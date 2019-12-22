@@ -1,0 +1,19 @@
+{
+  "name": "leyou-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "live-server --port=10002"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhuzhiqiang997/leyou-portal.git"
+  },
+  "author": "zhuzhiqiang997",
+  "license": "ISC"
+}
