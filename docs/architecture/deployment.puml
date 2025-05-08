@@ -1,0 +1,39 @@
+@startuml 部署图
+!include <C4/C4_Deployment>
+
+title 乐优商城部署视图
+
+Deployment_Node(cloud, "云服务器", "阿里云ECS") {
+    Deployment_Node(web, "Web层", "Nginx") {
+        Container(portal, "前端门户", "Vue.js")
+        Container(spa, "管理后台", "React")
+    }
+    
+    Deployment_Node(app, "应用层", "Docker") {
+        Container(gateway, "API网关", "Spring Cloud Gateway")
+        Container(auth, "认证服务", "Spring Security")
+        Container(order, "订单服务", "Spring Boot")
+        Container(item, "商品服务", "Spring Boot")
+    }
+    
+    Deployment_Node(data, "数据层") {
+        Container(db, "MySQL", "8.0", "主数据库")
+        Container(redis, "Redis", "6.0", "缓存")
+        Container(es, "Elasticsearch", "7.0", "搜索服务")
+    }
+}
+
+Deployment_Node(cdn, "CDN", "阿里云CDN") {
+    Container(static, "静态资源", "HTML/CSS/JS")
+}
+
+Rel(portal, gateway, "API调用", "HTTPS")
+Rel(gateway, auth, "认证请求", "gRPC")
+Rel(gateway, order, "订单请求", "HTTP")
+Rel(gateway, item, "商品请求", "HTTP")
+Rel(item, db, "数据存取", "JDBC")
+Rel(item, redis, "缓存读写")
+Rel(gateway, es, "搜索请求", "HTTP")
+Rel(portal, static, "加载资源", "CDN")
+
+@enduml

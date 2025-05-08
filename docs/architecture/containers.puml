@@ -1,0 +1,30 @@
+@startuml 容器图
+!include <C4/C4_Container>
+
+title 乐优商城容器视图
+
+Person(customer, "顾客", "使用系统的用户")
+
+System_Boundary(leyou, "乐优商城系统") {
+    Container(portal, "前端门户", "Vue.js", "提供用户界面")
+    Container(spa, "管理后台", "React", "提供管理界面") 
+    Container(gateway, "API网关", "Spring Cloud Gateway", "路由和鉴权")
+    Container(auth, "认证服务", "Spring Security", "用户认证和授权")
+    Container(order, "订单服务", "Spring Boot", "订单处理")
+    Container(item, "商品服务", "Spring Boot", "商品管理")
+    Container(search, "搜索服务", "Elasticsearch", "商品搜索")
+    Container(db, "主数据库", "MySQL", "业务数据存储")
+    Container(cache, "缓存", "Redis", "缓存热点数据")
+}
+
+Rel(customer, portal, "使用浏览器访问")
+Rel(portal, gateway, "API调用", "HTTP/JSON")
+Rel(gateway, auth, "认证请求", "JWT")
+Rel(gateway, order, "订单相关请求")
+Rel(gateway, item, "商品相关请求") 
+Rel(gateway, search, "搜索请求")
+Rel(order, db, "读写数据", "JDBC")
+Rel(item, db, "读写数据", "JDBC")
+Rel(item, cache, "缓存商品信息")
+
+@enduml

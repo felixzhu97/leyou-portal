@@ -1,0 +1,24 @@
+@startuml 组件图
+!include <C4/C4_Component>
+
+title 前端门户组件视图
+
+Container_Boundary(portal, "前端门户") {
+    Component(home, "首页组件", "Vue", "展示商品和促销")
+    Component(item_detail, "商品详情组件", "Vue", "商品详情展示")
+    Component(cart, "购物车组件", "Vue", "购物车管理")
+    Component(order, "订单组件", "Vue", "订单处理")
+    Component(search, "搜索组件", "Vue", "商品搜索")
+    Component(user, "用户组件", "Vue", "用户登录/注册")
+    Component(api_client, "API客户端", "Axios", "与后端通信")
+}
+
+Rel(home, item_detail, "查看详情", "router-link")
+Rel(home, search, "搜索商品")
+Rel(item_detail, cart, "加入购物车")
+Rel(cart, order, "结算")
+Rel(user, api_client, "认证请求")
+Rel(api_client, cart, "同步购物车")
+Rel(api_client, order, "提交订单")
+
+@enduml

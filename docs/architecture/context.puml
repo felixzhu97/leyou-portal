@@ -1,0 +1,24 @@
+@startuml 系统上下文图
+!include <C4/C4_Context>
+
+title 乐优商城系统上下文
+
+Person(customer, "顾客", "浏览和购买商品的用户")
+Person(admin, "管理员", "管理商品和订单的后台人员")
+
+System(leyou, "乐优商城系统", "B2C电商平台")
+
+System_Ext(payment, "支付网关", "第三方支付系统")
+System_Ext(logistics, "物流系统", "第三方物流平台")
+
+Rel(customer, leyou, "浏览商品\n下单购买\n查看订单")
+Rel(admin, leyou, "管理商品\n处理订单\n查看报表")
+Rel(leyou, payment, "发起支付请求\n查询支付状态")
+Rel(leyou, logistics, "提交物流信息\n查询物流状态")
+
+legend right
+<color:#000000>**图例说明**</color>
+|<color:#000000>角色</color>|<color:#000000>系统</color>|
+endlegend
+
+@enduml

@@ -38,6 +38,16 @@ leyou-portal/
 ├── js/                   # JavaScript脚本
 ├── plugins/              # 第三方插件
 ├── items/                # 商品数据
+├── docs/                 # 项目文档
+│   ├── DEVELOPMENT.md    # 开发指南
+│   ├── CONTRIBUTING.md   # 贡献指南
+│   ├── DEPLOYMENT.md     # 部署指南
+│   ├── API.md            # API文档
+│   └── architecture/     # 架构文档
+│       ├── context.puml      # 系统上下文图
+│       ├── containers.puml   # 容器图
+│       ├── components.puml   # 组件图
+│       └── deployment.puml   # 部署图
 ├── index.html            # 首页
 ├── item.html             # 商品详情页
 ├── cart.html             # 购物车页
@@ -65,6 +75,18 @@ leyou-portal/
 - Vue.js (部分页面)
 - Axios (HTTP 请求)
 - Live Server (开发服务器)
+- PlantUML (架构文档)
+
+## 架构文档
+
+项目使用 C4 模型进行架构设计，文档位于`docs/architecture/`目录：
+
+- `context.puml` - 系统上下文图
+- `containers.puml` - 容器图
+- `components.puml` - 组件图
+- `deployment.puml` - 部署图
+
+使用[PlantUML](https://plantuml.com/)工具可渲染这些图表。
 
 ## 贡献指南
 
@@ -73,7 +95,8 @@ leyou-portal/
 3. 提交修改 (`git commit -am '添加新特性'`)
 4. 推送分支 (`git push origin feature/你的特性`)
 5. 创建 Pull Request
-6. 
+6.
+
 ## 开源协议
 
 [MIT](https://opensource.org/licenses/MIT)
